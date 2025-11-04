@@ -1,16 +1,45 @@
-name: Hello World Workflow
+name: Node.js Lint Workflow
 
+# Déclenche le workflow sur push et pull request
 on:
-  push:        # le workflow se déclenche à chaque "push"
+  push:
     branches:
-      - main   # ou "master", selon le nom de la branche principale
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   greeting:
     runs-on: ubuntu-latest  # le job tourne sur Ubuntu
-
     steps:
       - name: Print Hello World
         run: echo "Hello World from Mr TRAORE!"
       - name: Print Current Date
         run: date
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Récupère le code du dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Étape 2 : Installe Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18   # tu peux changer la version si besoin
+
+      # Étape 3 : Installe les dépendances
+      - name: Install dependencies
+        run: npm install
+
+      # Étape 4 : Lancer le lint
+      - name: Run lint
+        run: npm run lint
+
+      # Étape 5 (optionnelle) : Message de succès
+      - name: Print success message
+        run: echo "Linting completed successfully!"
