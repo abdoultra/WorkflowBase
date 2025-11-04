@@ -16,3 +16,8 @@ jobs:
     steps:
       - name: Print deployment message
         run: echo "$MESSAGE"
+        
+# - name: Print a local env variable
+#   env:
+#     MESSAGE: "Déploiement réussi"
+#   run: echo "$MESSAGE"
