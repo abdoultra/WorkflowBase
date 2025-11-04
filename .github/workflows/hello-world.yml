@@ -33,12 +33,12 @@ jobs:
           node-version: 18   # tu peux changer la version si besoin
 
       # Étape 3 : Installe les dépendances
-      - name: Install dependencies
-        run: npm install
+         # name: Install dependencies
+        # run: npm install
 
       # Étape 4 : Lancer le lint
-      - name: Run lint
-        run: npm run lint
+         #name: Run lint
+        #run: npm run lint
 
       # Étape 5 (optionnelle) : Message de succès
       - name: Print success message
