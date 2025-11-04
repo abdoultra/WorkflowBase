@@ -1,0 +1,26 @@
+name: Artifact
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Créer le fichier report.txt
+      - name: Create report file
+        run: echo "Rapport d'analyse" > report.txt
+
+      # Étape 2 : Vérifier que le fichier est bien créé
+      - name: Display file content
+        run: cat report.txt
+
+      # Étape 3 : Télécharger l’artéfact (le sauvegarder)
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-analyse
+          path: report.txt
