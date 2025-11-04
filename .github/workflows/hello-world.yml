@@ -1,0 +1,16 @@
+name: Hello World Workflow
+
+on:
+  push:        # le workflow se déclenche à chaque "push"
+    branches:
+      - main   # ou "master", selon le nom de la branche principale
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest  # le job tourne sur Ubuntu
+
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World from Mr TRAORE!"
+      - name: Print Current Date
+        run: date
