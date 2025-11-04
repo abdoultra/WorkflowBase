@@ -1,0 +1,43 @@
+name: Dependent Jobs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build project
+        run: |
+          echo "Compilation du projet en cours..."
+          sleep 2
+          echo "Compilation terminée avec succès !"
+          echo "build output" > build.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: build.txt
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build   # ⬅ Indique que ce job dépend du job 'build'
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: ./build
+
+      - name: Run tests
+        run: |
+          echo "Exécution des tests..."
+          cat ./build/build.txt
+          echo "Tous les tests ont réussi !"
