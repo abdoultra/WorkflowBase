@@ -98,7 +98,7 @@ Les exercices sont progressifs, du plus simple au plus avancé.
 
 ## À propos
 
-Abdoulaye Traoré  
+**Abdoulaye Traoré**  
 Étudiant en Développement Web à MyDigitalSchool Paris  
 Passionné par le développement full-stack et les processus DevOps.  
-[Profil GitHub](https://github.com/abdoultra
+[Profil GitHub](https://github.com/abdoultra)
